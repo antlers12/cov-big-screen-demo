@@ -32,8 +32,9 @@
 
 ```
 sudo apt update
+sudo apt install git
 sudo apt install mysql-server
-git clone git@github.com:antlers12/cov-big-screen-demo.git
+git clone https://github.com/antlers12/cov-big-screen-demo.git
 ```
 
 ## 初始化mysql数据库
@@ -47,15 +48,17 @@ MySql 从8.0开始修改密码有了变化，在user表加了字段authenticatio
 **注意：如果不为空，先置空字段在修改密码**
 
 ```
-use mysql; 
-update user set authentication_string='' where user='root';      --将字段置为空
-alter user 'root'@'localhost' identified with mysql_native_password by '123456';     
+mysql -uroot -p
+
+mysql> use mysql; 
+mysql> update user set authentication_string='' where user='root';      --将字段置为空
+mysql> alter user 'root'@'localhost' identified with mysql_native_password by '123456';     
 --修改密码为123456
 
 service mysql restart	--重启一下
 ```
 
-**2、使用mysql命令连接数据库**
+**2、使用mysql命令连接数据库测试一下**
 
 ```
 mysql -uroot -p
@@ -64,6 +67,7 @@ mysql -uroot -p
 **3、执行脚本，快速创建一个数据库和两张表**
 
 ```
+chmod 744 shell_call_sql.sh
 ./shell_call_sql.sh
 ```
 
@@ -92,9 +96,11 @@ python3 spider.py
 python3 app.py
 ```
 
+访问地址：http://IP:8080
+
 ## 可能出现的问题
 
-**问题1：python:连接mysql出现1045或1698**
+**问题：python:连接mysql出现1045或1698**
 
 **原因：mysql 登录每次都需要用sudo造成的**
 

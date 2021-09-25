@@ -7,7 +7,7 @@ def get_time():
 
 def get_conn():
     # 建立连接
-    conn = pymysql.connect(host="127.0.0.1", user="root", password="root", db="cov", charset="utf8")
+    conn = pymysql.connect(host="127.0.0.1", user="root", password="123456", db="cov", charset="utf8")
     # c创建游标A
     cursor = conn.cursor()
     return conn, cursor
