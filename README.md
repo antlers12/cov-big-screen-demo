@@ -98,6 +98,25 @@ python3 app.py
 
 访问地址：http://IP:8080
 
+## 定时执行脚本
+
+可以写一个shell脚本
+
+```
+#!/bin/bash
+python3 ./spider.py
+sleep 10
+python3 app.py
+```
+
+编辑 `/etc/crontab` 文件
+
+```
+vim /etc/crontab
+
+* * /2 * * root /root/cov-big-screen-demo/time.sh
+```
+
 ## 可能出现的问题
 
 **问题：python:连接mysql出现1045或1698**
