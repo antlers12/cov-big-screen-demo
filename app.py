@@ -88,5 +88,5 @@ def get_r2_data():
 
 
 if __name__ == '__main__':
-    server = pywsgi.WSGIServer(('0.0.0.0', 8080), app)
+    server = pywsgi.WSGIServer(('0.0.0.0', 5000), app)
     server.serve_forever()
