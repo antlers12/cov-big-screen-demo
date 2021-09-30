@@ -1,10 +1,7 @@
 <!--
- * @Author: Mz715,Antlers
+ * @Author: Antlers
  * @Date: 2021-09-25 15:36:55
  * @LastEditTime: 2021-09-25 16:06:13
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \python_code\疫情可视化实战\templates\index.html
 -->
 <!DOCTYPE html>
 <html>
@@ -20,6 +17,7 @@
 	</head>
 
 	<body>
+        <button id="back" style="display: none">返回全国</button>
 		<div id="title">全国疫情实时跟踪</div>
 		<div id="time"></div>
 		<div id="l1"></div>
@@ -50,7 +48,11 @@
 				<h2>累积死亡</h2>
 			</div>
 		</div>
-		<div id="c2"></div>
+		<div id="c2">
+            <div id="box">
+                <span id="box-title"></span>
+            </div>
+        </div>
 		<div id="r1"></div>
 		<div id="r2"></div>
 
