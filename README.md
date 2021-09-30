@@ -94,7 +94,7 @@ python3 spider.py
 python3 app.py
 ```
 
-访问地址：http://IP:8080
+访问地址：http://127.0.0.1:80
 
 ## 定时执行脚本
 
