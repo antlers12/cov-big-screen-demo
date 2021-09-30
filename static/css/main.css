@@ -103,3 +103,14 @@ body {
 	right: 0%;
 	background: #777777;
 }
+
+#box{
+    display:none;
+    background-color: #888888;
+    width: 180px;
+    height: 30px;
+}
+
+#box-title{
+    display:block;
+}

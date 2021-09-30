@@ -46,12 +46,23 @@ def get_c1_data():
     return res[0]
 
 def get_c2_data():
-    sql = "select province,sum(confirm) from details " \
+    sql1 = "select province,sum(confirm) from details " \
           "where update_time=(select update_time from details " \
           "order by update_time desc limit 1) " \
           "group by province"
-    res = query(sql)
-    return res
+    sql2 = "select city,sum(confirm) from details " \
+          "where update_time=(select update_time from details " \
+          "order by update_time desc limit 1) " \
+          "group by city"
+    res1 = query(sql1)
+    res2 = query(sql2)
+    re=[]
+    for i,j in res2:
+        re.append((i+'市',j))
+    resx = tuple(re)
+    ress = (*res1,*resx)
+    # return res1
+    return ress
 
 def get_l1_data():
     sql = "select ds,confirm,suspect,heal,dead from history"
@@ -92,5 +103,4 @@ if __name__ == "__main__":
     #     res.append({"name":tup[0], "value":int(tup[1]) })
     
     # print(res)
-
     print(get_c2_data())

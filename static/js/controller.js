@@ -29,15 +29,17 @@ function get_c1_data() {
 function get_c2_data() {
     $.ajax({
         url:"/c2",
+        // async:false, //将同步设为异步
         success: function(data) {
 			ec_center_option.series[0].data=data.data;
+            mydata=data.data;
             ec_center.setOption(ec_center_option)
 		},
 		error: function(xhr, type, errorThrown) {
-
 		}
     })
 }
+
 
 function get_l1_data() {
     $.ajax({
@@ -93,6 +95,8 @@ function get_r2_data() {
         }
     })
 }
+
+
 
 get_time();
 get_c1_data();
