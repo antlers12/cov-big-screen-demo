@@ -1,8 +1,6 @@
 # 可视化疫情监控大屏
 
-> 本项目参考[Mz715](https://github.com/Mz715)的：https://github.com/Mz715/Covid-19Visualization
-
-这是一个基于echarts和flask的可视化项目，展示了疫情下数据，这里主要是基于[Mz715](https://github.com/Mz715)项目做一个详细介绍部署实验。
+这是一个基于echarts和flask的可视化项目，展示了疫情下数据，这里主要是基于[东方瑞通](https://space.bilibili.com/445321758) 项目视频做一个可视化大屏学习记录。
 
 ## 说明
 
