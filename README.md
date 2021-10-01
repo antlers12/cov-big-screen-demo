@@ -94,25 +94,77 @@ python3 spider.py
 python3 app.py
 ```
 
-访问地址：http://127.0.0.1:5000
+访问地址：http://IP:5000
 
-## 定时执行脚本
+## 部署定时爬虫
 
-可以写一个shell脚本
-
-```
-#!/bin/bash
-python3 ./spider.py
-sleep 10
-python3 app.py
-```
-
-编辑 `/etc/crontab` 文件
+使用crontab进行定时任务
 
 ```
-vim /etc/crontab
+crontab -e		# 编辑crontab
+crontab -l		# 查看crontab任务列表
+```
 
-* * /2 * * root /root/cov-big-screen-demo/time.sh
+例如爬虫脚本每一个小时执行一次
+
+```
+0 */1 * * * /usr/bin/python3 /root/cov-big-screen-demo/spider.py >> /root/cov-big-screen-demo/crontab.log 2>&1
+```
+
+启动任务
+
+```
+/etc/init.d/cron start
+```
+
+## Flask部署
+
+安装nginx
+
+```
+sudo apt install nginx
+```
+
+安装gunicorn，[Gunicorn](https://gunicorn.org/) (独角兽)是一个高效的Python WSGI Server，我们将使用它来运行 wsgi application，
+
+```
+pip install gunicorn
+```
+
+配置nginx服务器配置文件
+
+```
+vim /etc/nginx/conf.d/cov.conf
+```
+
+```
+server {
+    listen       80;
+    server_name  127.0.0.1;
+ 
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+```
+
+注释Nginx默认页面，防止因为配置优先级不够，造成反向代理失败
+
+```
+vim /etc/nginx/sites-available/default
+```
+
+重启一下服务器后要再使用
+
+```
+service nginx restart
+```
+启动gunicorn，需要在app.py所属的目录下使用
+
+```
+gunicorn -b 127.0.0.1:8080 -D app:app
 ```
 
 ## 可能出现的问题
