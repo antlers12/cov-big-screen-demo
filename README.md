@@ -160,7 +160,7 @@ vim /etc/nginx/sites-available/default
 ```
 gunicorn -b 127.0.0.1:8080 -D app:app
 ```
-重启一下服务器,访问80端口
+重启一下服务器，访问80端口
 
 ```
 service nginx restart
