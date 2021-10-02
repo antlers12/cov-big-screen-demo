@@ -155,17 +155,17 @@ server {
 ```
 vim /etc/nginx/sites-available/default
 ```
-
-重启一下服务器后要再使用
-
-```
-service nginx restart
-```
 启动gunicorn，需要在app.py所属的目录下使用
 
 ```
 gunicorn -b 127.0.0.1:8080 -D app:app
 ```
+重启一下服务器,访问80端口
+
+```
+service nginx restart
+```
+
 
 ## 可能出现的问题
 
